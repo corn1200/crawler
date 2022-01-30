@@ -19,8 +19,15 @@ const puppeteer = require("puppeteer");
     // 네비게이션 로딩까지 지연
     await page.waitForNavigation();
 
-    await page.evaluate(() => {
-        // window.scrollBy(0, window.innerHeight);
-        console.log(window.innerHeight);
-    });
+    // 반복하여 스크롤을 내립니다
+    let infiniteScrollInterval = setInterval(async () => {
+        await page.evaluate(() => {
+            window.scrollBy(0, window.innerHeight);
+        });
+    }, 1000);
+
+    // 10초 뒤에 스크롤 함수를 종료합니다.
+    setTimeout(() => {
+        clearInterval(infiniteScrollInterval);
+    }, 1000 * 10)
 })();

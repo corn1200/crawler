@@ -11,7 +11,7 @@ const cheerio = require("cheerio");
     height: 900,
   });
 
-  await page.goto("https://brunch.co.kr/search?q=IT&type=article");
+  await page.goto("https://brunch.co.kr/search");
   // 특정 엘리먼트 클릭
   await page.click("input.txt_search");
   // 단어 타이핑 후 엔터 press 이벤트
